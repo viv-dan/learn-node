@@ -1,1 +1,5 @@
 - In eventloop/timer.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+As the timer phase in the event loop does not take precedence over any of the function phases in the event loop the setTimeout function callbacks will be executed last
+
+The timer phase event loop callbacks are indeed executed at last as they are executed in the worker threads and rest of the functions take precedence as the pending callbacks do not take precedence. they are executed only after all the executions are done on the main thread

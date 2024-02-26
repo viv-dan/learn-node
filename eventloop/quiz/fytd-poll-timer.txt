@@ -1,3 +1,9 @@
 - Explain the order of execution in terms of the event loop for eventloop/poll_timer.js.
 - Will the order of execution change if the delay in the while loop is changed from 10s to 150s? Why or why not?
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+First the IO operations callbacks will be executed first as it takes precedence as soon as the IO operations complete. It happens in the POll phase
+
+When the fileread is taking longer due to the file being larger, the settimeout will execute first as the io operation doesnt get completed and its callbacks is not in the queue.
+
+for 10s the settimeout callback is still executed last but when we set it to 0 then its callback will be executed first

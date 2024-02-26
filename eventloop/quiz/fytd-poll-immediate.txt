@@ -1,2 +1,6 @@
 - Explain the order of execution in terms of the event loop for eventloop/immediate.js.
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+Here the IO operation anyway takes precedence as its being run in poll phase in the main thread and the callback functions actually is executed after the readfile operation completes. And here the setImmediate runs first as it has precedence over timers in the event loop phases and also the timer has 5ms as timeout. So only after 5ms it runs. And at last settimeout runs.
+
+Even if the timeout is changed to 0 the order doesnt change as the immediate always takes precedence over timers

@@ -1,1 +1,3 @@
 - In eventloop/poll.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+The main thread calls an IO operation in of its worked threads and soon after the main thread completes its execution, it then checks event loop call backs. Here the event phase loop will be a poll as its an IO operation.
